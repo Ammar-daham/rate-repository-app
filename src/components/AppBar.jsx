@@ -1,8 +1,11 @@
 import { View, StyleSheet } from 'react-native'
+import * as React from "react";
+
 import Constants from 'expo-constants'
 import AppBarTab from './AppBarTab'
+import { Link } from "react-router-native";
 
-import theme from '../theme';
+import theme from '../theme'
 
 
 const styles = StyleSheet.create({
@@ -15,7 +18,13 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <AppBarTab text="Repositories"/>
+      <Link to="/" >
+        <AppBarTab text="Repositories" />
+      </Link>
+
+      <Link to="/sign-in" >
+        <AppBarTab text="Sign in" />
+      </Link>
     </View>
   )
 }

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Pressable } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 
 import theme from '../theme';
 
@@ -17,9 +17,9 @@ const styles = StyleSheet.create({
 
 const AppBarTab = ({ text }) => {
   return (
-    <Pressable style={styles.tab}>
+    <Text style={styles.tab}>
       <Text style={styles.tabText}>{text}</Text>
-    </Pressable>
+    </Text>
   )
 }
 
