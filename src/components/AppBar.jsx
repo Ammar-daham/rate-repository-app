@@ -1,12 +1,11 @@
-import { View, StyleSheet } from 'react-native'
-import * as React from "react";
+import { View, StyleSheet, ScrollView } from 'react-native'
+import * as React from 'react'
 
 import Constants from 'expo-constants'
 import AppBarTab from './AppBarTab'
-import { Link } from "react-router-native";
+import { Link } from 'react-router-native'
 
 import theme from '../theme'
-
 
 const styles = StyleSheet.create({
   container: {
@@ -18,13 +17,19 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <Link to="/" >
-        <AppBarTab text="Repositories" />
-      </Link>
+      <ScrollView horizontal>
+        <Link to="/">
+          <AppBarTab text="Repositories" />
+        </Link>
 
-      <Link to="/sign-in" >
-        <AppBarTab text="Sign in" />
-      </Link>
+        <Link to="/sign-in">
+          <AppBarTab text="Sign in" />
+        </Link>
+        <Link to="/sign-in">
+          <AppBarTab text="Sign in" />
+        </Link>
+        
+      </ScrollView>
     </View>
   )
 }
