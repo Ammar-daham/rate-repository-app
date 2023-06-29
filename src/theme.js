@@ -1,13 +1,14 @@
 const theme = {
   colors: {
     textPrimary: '#24292e',
-    textSecondary: '#586069',
+    textSecondary: 'gray',
     primary: '#0366d6',
     mainPrimary: '#e1e4e8',
     appBarPrimary: '#24292e',
     tabText: 'white',
     grayText: 'gray',
-    cardContainer: 'white'
+    cardContainer: 'white',
+    error: '#d73a4a'
   },
   fontSizes: {
     body: 14,

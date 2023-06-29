@@ -1,6 +1,16 @@
-//import Text from './Text';
+import * as yup from 'yup'
+
 import LoginForm from './LoginForm'
 import { Formik } from 'formik'
+
+const validationSchema = yup.object().shape({
+  username: yup
+    .string()
+    .required('Username is required'),
+  password: yup
+    .string()
+    .required('Password is required'),
+})
 
 const SignIn = () => {
   const initialValues = {
@@ -8,12 +18,15 @@ const SignIn = () => {
     password: '',
   }
   const onSubmit = (values) => {
-    
-    console.log("values:", values)
+    console.log('values:', values)
   }
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik
+    initialValues={initialValues}
+    onSubmit={onSubmit}
+    validationSchema={validationSchema}
+    >
       {({ handleSubmit }) => <LoginForm onSubmit={handleSubmit} />}
     </Formik>
   )

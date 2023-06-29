@@ -3,11 +3,11 @@ import FormikTextInput from './FormikTextInput'
 import theme from '../theme'
 
 const styles = StyleSheet.create({
-  Container: {
+  container: {
     padding: 20,
     backgroundColor: theme.colors.cardContainer,
   },
-  TextInput: {
+  textInput: {
     width: '100%',
     height: 50,
     borderWidth: 1,
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingLeft: 10,
   },
-  Button: {
+  button: {
     width: '100%',
     height: 50,
     backgroundColor: theme.colors.primary,
@@ -25,25 +25,33 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     
   },
-  ButtonText: {
+  buttonText: {
     color: "white",
     fontSize: theme.fontSizes.subheading,
     fontWeight: theme.fontWeights.bold
-  }
+  },
+  errorTextInput: {
+    borderColor: theme.colors.error, // Red border color for error
+  },
+  errorText: {
+    color: theme.colors.error,
+    marginTop: 5,
+    marginBottom: 5,
+  },
 })
 
 const LoginForm = ({ onSubmit }) => {
   return (
-    <View style={styles.Container}>
-      <FormikTextInput name="username" placeholder="Username" style={styles.TextInput} />
+    <View style={styles.container}>
+      <FormikTextInput name="username" placeholder="Username" styles={styles} />
       <FormikTextInput
         name="password"
         placeholder="Password"
         secureTextEntry={true}
-        style={styles.TextInput}
+        styles={styles}
       />
-      <Pressable onPress={onSubmit} style={styles.Button}>
-        <Text style={styles.ButtonText}>Sign in</Text>
+      <Pressable onPress={onSubmit} style={styles.button}>
+        <Text style={styles.buttonText}>Sign in</Text>
       </Pressable>
     </View>
   )
