@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const BodyMassIndexForm = ({ onSubmit }) => {
+const LoginForm = ({ onSubmit }) => {
   return (
     <View style={styles.Container}>
       <FormikTextInput name="username" placeholder="Username" style={styles.TextInput} />
@@ -49,4 +49,4 @@ const BodyMassIndexForm = ({ onSubmit }) => {
   )
 }
 
-export default BodyMassIndexForm
+export default LoginForm

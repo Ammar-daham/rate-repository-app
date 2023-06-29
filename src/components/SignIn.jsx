@@ -1,5 +1,5 @@
 //import Text from './Text';
-import BodyMassIndexForm from './BodyMassIndexForm'
+import LoginForm from './LoginForm'
 import { Formik } from 'formik'
 
 const SignIn = () => {
@@ -14,7 +14,7 @@ const SignIn = () => {
 
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
-      {({ handleSubmit }) => <BodyMassIndexForm onSubmit={handleSubmit} />}
+      {({ handleSubmit }) => <LoginForm onSubmit={handleSubmit} />}
     </Formik>
   )
 }
