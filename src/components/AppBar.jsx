@@ -25,10 +25,6 @@ const AppBar = () => {
         <Link to="/sign-in">
           <AppBarTab text="Sign in" />
         </Link>
-        <Link to="/sign-in">
-          <AppBarTab text="Sign in" />
-        </Link>
-        
       </ScrollView>
     </View>
   )
