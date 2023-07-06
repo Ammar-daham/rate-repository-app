@@ -8,7 +8,7 @@ export const GET_REPOSITORIES = gql`
           id
           fullName
           description
-          language          
+          language
           forksCount
           stargazersCount
           ratingAverage
@@ -17,5 +17,14 @@ export const GET_REPOSITORIES = gql`
         }
       }
     }
-  } 
+  }
+`
+
+export const ME = gql`
+  query Me {
+    me {
+      username
+      id
+    }
+  }
 `
