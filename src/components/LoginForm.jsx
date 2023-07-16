@@ -50,7 +50,7 @@ const LoginForm = ({ onSubmit }) => {
         secureTextEntry={true}
         styles={styles}
       />
-      <Pressable onPress={onSubmit} style={styles.button}>
+      <Pressable onPress={onSubmit} testID='signInBtn' style={styles.button}>
         <Text style={styles.buttonText}>Sign in</Text>
       </Pressable>
     </View>
