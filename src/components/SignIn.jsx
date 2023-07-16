@@ -24,16 +24,15 @@ const SignIn = () => {
     username: '',
     password: '',
   }
+
   const onSubmit = async (values) => {
     const { username, password } = values;
-    try {
-      await signIn({ username, password });
-      console.log(username, " ", password)
-      navigate("/")
-    } catch (error) {
-      console.log('Sign in failed', error);
-    }
-  }
+
+    await signIn({ username, password });
+
+    navigate('/', { replace: true });
+  };
+
 
   return (
     <Formik

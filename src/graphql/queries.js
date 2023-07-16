@@ -1,30 +1,60 @@
-import { gql } from '@apollo/client'
+// import { gql } from '@apollo/client'
+
+// export const GET_REPOSITORIES = gql`
+//   query {
+//     repositories {
+//       edges {
+//         node {
+//           id
+//           fullName
+//           description
+//           language
+//           forksCount
+//           stargazersCount
+//           ratingAverage
+//           reviewCount
+//           ownerAvatarUrl
+//         }
+//       }
+//     }
+//   }
+// `
+
+// export const GET_CURRENT_USER = gql`
+//   query Me {
+//     me {
+//       username
+//       id
+//     }
+//   }
+// `
+
+import { gql } from '@apollo/client';
+
+import { REPOSITORY_BASE_FIELDS, USER_BASE_FIELDS } from './fragments';
 
 export const GET_REPOSITORIES = gql`
   query {
     repositories {
       edges {
         node {
-          id
-          fullName
-          description
-          language
-          forksCount
-          stargazersCount
+          ...repositoryBaseFields
           ratingAverage
           reviewCount
-          ownerAvatarUrl
         }
       }
     }
   }
-`
 
-export const ME = gql`
-  query Me {
+  ${REPOSITORY_BASE_FIELDS}
+`;
+
+export const GET_CURRENT_USER = gql`
+  query {
     me {
-      username
-      id
+      ...userBaseFields
     }
   }
-`
+
+  ${USER_BASE_FIELDS}
+`;

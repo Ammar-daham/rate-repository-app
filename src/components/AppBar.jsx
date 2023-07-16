@@ -1,13 +1,12 @@
 import { View, StyleSheet, ScrollView } from 'react-native'
 import * as React from 'react'
-import { ME } from '../graphql/queries'
+import { GET_CURRENT_USER } from '../graphql/queries'
 import Constants from 'expo-constants'
 import AppBarTab from './AppBarTab'
-import { Link } from 'react-router-native'
 import { useQuery } from '@apollo/client'
-import { useEffect } from 'react'
 import { useApolloClient } from '@apollo/client'
 import { useAuthStorage } from '../hooks/useAuthStorage';
+import { useNavigate } from 'react-router-native';
 
 
 import theme from '../theme'
@@ -22,41 +21,28 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   const apolloClient = useApolloClient()
   const authStorage = useAuthStorage();
+  const navigate = useNavigate();
 
 
-  const { data } = useQuery(ME, {
-    fetchPolicy: 'cache-and-network',
-  })
+  const { data } = useQuery(GET_CURRENT_USER)
+  const currentUser = data?.me;
 
-  useEffect(() => {
-    console.log('data: ', data)
-  }, [])
-
-  const handleSignOut = async () => {
-    // Remove access token or any other authentication-related data from storage
-    authStorage.removeAccessToken();
-    console.log(authStorage.removeAccessToken())
-    // Reset Apollo Client's cache
+  const onSignOut = async () => {
+    await authStorage.removeAccessToken();
     apolloClient.resetStore();
+    navigate('/');
   };
 
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
-        <Link to="/">
-          <AppBarTab text="Repositories" />
-        </Link>
-
-        {data.me && (
-          <Link to="/sign-in" onPress={handleSignOut}>
-            <AppBarTab text="Sign out" />
-          </Link>
+        <AppBarTab to="/">Repositories</AppBarTab>
+        {currentUser ? (
+          <AppBarTab onPress={onSignOut}>Sign out</AppBarTab>
+        ) : (
+          <AppBarTab to="/sign-in">Sign in</AppBarTab>
         )}
-        {data.me == null  && (
-          <Link to="/sign-in">
-            <AppBarTab text="Sign in" />
-          </Link>
-        )}
+        
       </ScrollView>
     </View>
   )

@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = ({ item }) => {
   return (
-    <View style={styles.Container}>
+    <View testID="repositoryItem" style={styles.Container}>
       <View style={styles.headContainer}>
         <View style={styles.avatarContainer}>
           <Image style={styles.avatar} source={{ uri: item.ownerAvatarUrl }} />
@@ -51,7 +51,7 @@ const RepositoryItem = ({ item }) => {
 
 
       <View style={styles.bodyContainer}>
-        <View style={styles.subContainer2}>
+        <View>
           <Text fontWeight="bold">
             {item.stargazersCount >= 1000
               ? `${(item.stargazersCount / 1000).toFixed(1)}K`
@@ -75,7 +75,7 @@ const RepositoryItem = ({ item }) => {
         </View>
 
         <View style={styles.bodySubContainer}>
-          <Text fontWeight="bold">{item.ratingAverage}</Text>
+          <Text  fontWeight="bold">{item.ratingAverage}</Text>
           <Text color="textSecondary">Rating</Text>
         </View>
 

@@ -1,4 +1,5 @@
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet, Text, View, Pressable} from 'react-native'
+import { Link } from 'react-router-native'
 
 import theme from '../theme';
 
@@ -15,12 +16,23 @@ const styles = StyleSheet.create({
     },
   })
 
-const AppBarTab = ({ text }) => {
-  return (
-    <Text style={styles.tab}>
-      <Text style={styles.tabText}>{text}</Text>
-    </Text>
-  )
-}
 
-export default AppBarTab
+const AppBarTab = ({ children, to, ...props }) => {
+  const content = (
+    <View style={styles.tab} {...props}>
+      <Text fontWeight="bold" style={styles.tabText}>
+        {children}
+      </Text>
+    </View>
+  );
+  
+  return to ? (
+    <Link to={to} {...props}>
+      {content}
+    </Link>
+  ) : (
+    <Pressable {...props}>{content}</Pressable>
+    );
+  };
+  
+  export default AppBarTab
