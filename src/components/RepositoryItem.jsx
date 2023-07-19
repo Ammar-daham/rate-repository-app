@@ -1,8 +1,9 @@
 import React from 'react'
 import { View, StyleSheet, Image } from 'react-native'
 import Text from './Text'
-
 import theme from '../theme'
+import Button from './Button'
+import * as Linking from 'expo-linking'
 
 const styles = StyleSheet.create({
   Container: {
@@ -35,7 +36,13 @@ const styles = StyleSheet.create({
   },
 })
 
-const RepositoryItem = ({ item }) => {
+const RepositoryItem = ({ item, isUrl }) => {
+  const handleOpenGitHub = () => {
+    if (item.url) {
+      Linking.openURL(item.url)
+    }
+  }
+
   return (
     <View testID="repositoryItem" style={styles.Container}>
       <View style={styles.headContainer}>
@@ -48,7 +55,6 @@ const RepositoryItem = ({ item }) => {
           <Text color="primary">{item.language}</Text>
         </View>
       </View>
-
 
       <View style={styles.bodyContainer}>
         <View>
@@ -75,11 +81,16 @@ const RepositoryItem = ({ item }) => {
         </View>
 
         <View style={styles.bodySubContainer}>
-          <Text  fontWeight="bold">{item.ratingAverage}</Text>
+          <Text fontWeight="bold">{item.ratingAverage}</Text>
           <Text color="textSecondary">Rating</Text>
         </View>
-
       </View>
+
+      {isUrl && (
+        <View style={styles.bodySubContainer}>
+          <Button text={'Open in GitHub'} onSubmit={handleOpenGitHub} />
+        </View>
+      )}
     </View>
   )
 }
