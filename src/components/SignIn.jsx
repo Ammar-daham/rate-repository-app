@@ -15,11 +15,6 @@ const initialValues = {
 }
 
 export const SignInContainer = ({ onSubmit }) => {
-  const initialValues = {
-    username: '',
-    password: '',
-  };
-
   const handleFormSubmit = async (values) => {
     const { username, password } = values;
     console.log(username, password); 

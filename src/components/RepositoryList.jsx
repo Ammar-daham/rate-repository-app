@@ -84,7 +84,7 @@ const RepositoryList = () => {
 
 
   const renderRepositoryItem = ({ item }) => (
-    <Pressable onPress ={() => navigate(`/repository/${item.id}`)}>
+    <Pressable onPress ={() => navigate(`/repositories/${item.id}`)}>
       <RepositoryItem item={item} />
     </Pressable>
   )

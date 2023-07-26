@@ -3,7 +3,6 @@ import { useParams } from "react-router-native";
 import { FlatList } from "react-native";
 import ReviewItem from "./ReviewItem";
 import RepositoryItem from "./RepositoryItem";
-import { ItemSeparator } from "./RepositoryList";
 import useRepositoryDetails from "../hooks/useRepository";
 
 const SingleRepository = () => {
@@ -29,7 +28,6 @@ const SingleRepository = () => {
       renderItem={({ item }) => <ReviewItem review={item.node} />}
       keyExtractor={({ node }) => node.id}
       ListHeaderComponent={() => <RepositoryItem item={repository} isUrl={true} />}
-      ItemSeparatorComponent={ItemSeparator}
       onEndReached={handleListEnd}
       onEndReachedThreshold={0.5}
     />
