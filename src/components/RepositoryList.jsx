@@ -1,6 +1,8 @@
+import React, { useState } from 'react';
 import { FlatList, View, StyleSheet, Pressable } from 'react-native'
 import RepositoryItem from './RepositoryItem'
 import { useNavigate } from 'react-router-native';
+import OrderingSelection from './OrderingSelection';
 
 import useRepositories from '../hooks/useRepositories'
 
@@ -75,7 +77,23 @@ export const RepositoryListContainer = ({ repositories }) => {
 }
 
 const RepositoryList = () => {
-  const { repositories } = useRepositories()
+  const [orderBy, setOrderBy] = useState('latest');
+  const order_by = orderBy === 'lowest' || orderBy === 'highest'
+    ? 'RATING_AVERAGE'
+    : 'CREATED_AT';
+
+  const order_direction = orderBy === 'lowest' ? 'ASC' : 'DESC';
+
+  const variables = {
+    orderBy: order_by,
+    orderDirection: order_direction,
+  };
+
+  const { repositories } = useRepositories(variables);
+
+  const handleOrderingChange = (value) => {
+    setOrderBy(value);
+  };
   const navigate = useNavigate();
 
   const repositoryNodes = repositories
@@ -90,12 +108,15 @@ const RepositoryList = () => {
   )
 
   return (
-    <FlatList
-      data={repositoryNodes}
-      renderItem={renderRepositoryItem}
-      keyExtractor={(item) => item.id}
-      ItemSeparatorComponent={() => <View style={styles.separator} />}
-    />
+    <View>
+      <OrderingSelection selectedOrdering={orderBy} onOrderingChange={handleOrderingChange} />
+      <FlatList
+        data={repositoryNodes}
+        renderItem={renderRepositoryItem}
+        keyExtractor={(item) => item.id}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
+      />
+    </View>
   )
 }
 

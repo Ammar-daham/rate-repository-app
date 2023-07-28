@@ -43,7 +43,10 @@ const AppBar = () => {
             <AppBarTab onPress={onSignOut}>Sign out</AppBarTab>
           </React.Fragment>
         ) : (
-          <AppBarTab to="/sign-in">Sign in</AppBarTab>
+          <React.Fragment>
+            <AppBarTab to="/sign-in">Sign in</AppBarTab>
+            <AppBarTab to="/sign-up">Sign up</AppBarTab>
+          </React.Fragment>
         )}
         
       </ScrollView>

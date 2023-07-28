@@ -15,7 +15,7 @@ const useCreateReview = () => {
         },
       })
 
-      return response.data;
+      return response.data
     } catch (error) {
       console.error('Error creating review: ', error.message)
     }
