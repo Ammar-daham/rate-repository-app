@@ -40,6 +40,7 @@ const AppBar = () => {
         {currentUser ? (
           <React.Fragment>
             <AppBarTab to="/create-review">Create a review</AppBarTab>
+            <AppBarTab to="/reviews">My reviews</AppBarTab>
             <AppBarTab onPress={onSignOut}>Sign out</AppBarTab>
           </React.Fragment>
         ) : (

@@ -29,9 +29,22 @@ const style = StyleSheet.create({
     margin: 10,
   },
   ratingText: {
-    margin: 'auto',
-    color: theme.colors.primary
-  }
+    fontSize: theme.fontSizes.heading,
+    fontWeight: theme.fontWeights.bold,
+    color: theme.colors.primary,
+    alignSelf: 'center',
+  },
+  ratingContainer: {
+    flexDirection: 'row',
+    flexGrow: 0,
+    marginRight: 20,
+    height: 60,
+    width: 60,
+    borderWidth: 3,
+    borderColor: theme.colors.primary,
+    borderRadius: 30,
+    justifyContent: 'center',
+  },
 });
 
 const ReviewItem = ({ review }) => {
@@ -39,7 +52,7 @@ const ReviewItem = ({ review }) => {
 
   return (
     <View style={style.container}>
-      <View style={style.rating}>
+      <View style={style.ratingContainer}>
         <Text style={style.ratingText}>{review.rating}</Text>
       </View>
       <View style={style.mainInfo}>
